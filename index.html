@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harsh Mehta Property Dealer — Premium Land Deals</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080c10;
+    --bg2: #0d1117;
+    --card: #111820;
+    --gold: #c9a84c;
+    --gold2: #e8c97a;
+    --text: #e8e0d0;
+    --muted: #7a7060;
+    --accent: #1a2a1a;
+    --green: #4caf76;
+    --border: rgba(201,168,76,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.5;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: rgba(8,12,16,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 2px;
+  }
+  .logo span { color: var(--text); }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+  }
+
+  nav ul a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+  nav ul a:hover { color: var(--gold); }
+
+  .nav-btn {
+    background: var(--gold);
+    color: #080c10;
+    padding: 10px 28px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .nav-btn:hover { background: var(--gold2); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 120px 60px 60px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 70% 50%, rgba(201,168,76,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(76,175,118,0.05) 0%, transparent 60%),
+      linear-gradient(135deg, #080c10 0%, #0d1a0d 50%, #080c10 100%);
+  }
+
+  /* Grid lines background */
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid var(--border);
+    padding: 8px 20px;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 30px;
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.5); }
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--text);
+    margin-bottom: 24px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  h1 .gold { color: var(--gold); }
+  h1 .outline {
+    -webkit-text-stroke: 1px var(--gold);
+    color: transparent;
+  }
+
+  .hero-desc {
+    font-size: 1.15rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 40px;
+    font-weight: 400;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.6s ease both;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: #080c10;
+    padding: 16px 40px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: white;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .btn-primary:hover::after { opacity: 0.1; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201,168,76,0.3); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    padding: 16px 40px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 1px solid rgba(232,224,208,0.2);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* STATS */
+  .stats-bar {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--border);
+    z-index: 2;
+  }
+
+  .stat {
+    padding: 28px 40px;
+    border-right: 1px solid var(--border);
+    animation: fadeUp 0.8s ease both;
+  }
+  .stat:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* LISTINGS */
+  .section {
+    padding: 100px 60px;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 60px;
+  }
+
+  .section-tag {
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .section-link {
+    color: var(--gold);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 2px;
+    font-weight: 600;
+  }
+
+  /* PROPERTY CARDS */
+  .properties-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .prop-card {
+    background: var(--card);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+    border: 1px solid var(--border);
+  }
+  .prop-card:hover { transform: translateY(-6px); }
+  .prop-card:hover .prop-img { transform: scale(1.05); }
+  .prop-card:hover .prop-overlay { opacity: 1; }
+
+  .prop-img-wrap {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .prop-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    background: linear-gradient(135deg, #1a2a1a, #0d1a0d);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+  }
+
+  .prop-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(201,168,76,0.15);
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .prop-overlay span {
+    background: var(--gold);
+    color: #080c10;
+    padding: 10px 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+  }
+
+  .prop-badge {
+    position: absolute;
+    top: 16px; left: 16px;
+    background: var(--green);
+    color: white;
+    padding: 4px 12px;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .prop-body {
+    padding: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .prop-location {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .prop-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+
+  .prop-specs {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .prop-spec {
+    font-size: 0.82rem;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+  .prop-spec strong { color: var(--text); }
+
+  .prop-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .prop-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .prop-price-label {
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .prop-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 20px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+  }
+  .prop-btn:hover { background: var(--gold); color: #080c10; border-color: var(--gold); }
+
+  /* WHY US */
+  .why-section {
+    padding: 100px 60px;
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-top: 60px;
+  }
+
+  .feature {
+    padding: 32px;
+    border: 1px solid var(--border);
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+    background: var(--card);
+  }
+  .feature:hover { border-color: var(--gold); transform: translateY(-4px); }
+
+  .feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .feature-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+
+  .feature-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .feature::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 0;
+    background: var(--gold);
+    transition: height 0.3s;
+  }
+  .feature:hover::before { height: 100%; }
+
+  /* CONTACT */
+  .contact-section {
+    padding: 100px 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .contact-left .section-title { margin-bottom: 20px; }
+
+  .contact-info {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    border: 1px solid var(--border);
+    background: var(--card);
+  }
+
+  .contact-icon { font-size: 1.4rem; }
+
+  .contact-detail { font-size: 0.85rem; color: var(--muted); letter-spacing: 1px; }
+  .contact-val { font-size: 1rem; font-weight: 600; color: var(--text); margin-top: 2px; }
+
+  /* FORM */
+  .contact-form {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 40px;
+  }
+
+  .form-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: var(--gold);
+  }
+
+  .form-group { margin-bottom: 20px; }
+
+  .form-label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 14px 16px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--gold);
+  }
+  .form-select option { background: var(--bg2); }
+  .form-textarea { resize: vertical; min-height: 100px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .submit-btn {
+    width: 100%;
+    background: var(--gold);
+    color: #080c10;
+    padding: 16px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+  }
+  .submit-btn:hover { background: var(--gold2); transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--gold);
+  }
+
+  .footer-copy { color: var(--muted); font-size: 0.85rem; letter-spacing: 1px; }
+
+  .footer-links { display: flex; gap: 30px; }
+  .footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.82rem;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* EMOJI PROPERTY IMAGES (placeholder) */
+  .land-emoji {
+    width: 100%; height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+  }
+
+  .bg-farm { background: linear-gradient(135deg, #0d1f0a, #1a3312); }
+  .bg-plot { background: linear-gradient(135deg, #1a1a0a, #2a2a12); }
+  .bg-agri { background: linear-gradient(135deg, #0a1a0a, #123312); }
+
+  /* SCROLL INDICATOR */
+  .scroll-line {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 2;
+  }
+  .scroll-line span {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    writing-mode: vertical-lr;
+  }
+  .scroll-line::before {
+    content: '';
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+  @keyframes scrollLine {
+    0% { height: 0; opacity: 1; }
+    100% { height: 80px; opacity: 0; }
+  }
+
+  /* MARQUEE */
+  .marquee-wrap {
+    background: var(--gold);
+    padding: 14px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .marquee {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+    color: #080c10;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+@media (max-width: 768px) {
+  nav{padding:15px 20px;flex-direction:column;gap:15px;}
+  nav ul{gap:15px;flex-wrap:wrap;justify-content:center;}
+  .hero{padding:120px 20px 40px;}
+  .section,.why-section,.contact-section{padding:60px 20px;}
+  .properties-grid,.features-grid{grid-template-columns:1fr;}
+  .contact-section{grid-template-columns:1fr;gap:40px;}
+  .stats-bar{grid-template-columns:1fr 1fr;}
+  footer{flex-direction:column;gap:15px;text-align:center;}
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Harsh Mehta <span>Property Dealer</span></div>
+  <ul>
+    <li><a href="#listings">Listings</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-btn">Free Consultation</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag">India's Premium Land Marketplace</div>
+    <h1>
+      Apni <span class="gold">Zameen</span>,<br>
+      Apna <span class="outline">Sapna</span>
+    </h1>
+    <p class="hero-desc">
+      Agricultural plots se lekar residential land tak — har budget mein verified, legal aur profitable zameen deals. Bihar, UP aur MP ke best locations.
+    </p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('listings').scrollIntoView({behavior:'smooth'})">Properties Dekhein</button>
+      <button class="btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Free Call Karein</button>
+    </div>
+  </div>
+
+  <div class="scroll-line"><span>Scroll</span></div>
+
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-num">850+</div><div class="stat-label">Properties Sold</div></div>
+    <div class="stat"><div class="stat-num">12+</div><div class="stat-label">Saal Ka Tajurba</div></div>
+    <div class="stat"><div class="stat-num">98%</div><div class="stat-label">Client Satisfaction</div></div>
+    <div class="stat"><div class="stat-num">₹0</div><div class="stat-label">Hidden Charges</div></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee">
+    ✦ Verified Properties &nbsp;&nbsp; ✦ Legal Documents &nbsp;&nbsp; ✦ Best Rates &nbsp;&nbsp; ✦ 12 Saal Ka Experience &nbsp;&nbsp; ✦ Bihar • UP • MP • Rajasthan &nbsp;&nbsp; ✦ Agricultural Land &nbsp;&nbsp; ✦ Residential Plots &nbsp;&nbsp; ✦ Commercial Land &nbsp;&nbsp; ✦ Verified Properties &nbsp;&nbsp; ✦ Legal Documents &nbsp;&nbsp; ✦ Best Rates &nbsp;&nbsp; ✦ 12 Saal Ka Experience &nbsp;&nbsp; ✦ Bihar • UP • MP • Rajasthan &nbsp;&nbsp; ✦ Agricultural Land &nbsp;&nbsp; ✦ Residential Plots &nbsp;&nbsp; ✦ Commercial Land &nbsp;&nbsp;
+  </div>
+</div>
+
+<!-- LISTINGS -->
+<section class="section" id="listings">
+  <div class="section-header">
+    <div>
+      <div class="section-tag">✦ Featured Listings</div>
+      <h2 class="section-title">Premium Zameen<br>Deals</h2>
+    </div>
+    <a href="#" class="section-link">Sab Dekhein →</a>
+  </div>
+
+  <div class="properties-grid">
+
+    <!-- Card 1 -->
+    <div class="prop-card">
+      <div class="prop-img-wrap">
+        <div class="land-emoji bg-farm">🌾</div>
+        <div class="prop-badge">Available</div>
+        <div class="prop-overlay"><span>Details Dekhein</span></div>
+      </div>
+      <div class="prop-body">
+        <div class="prop-location">📍 Patna, Bihar</div>
+        <div class="prop-title">Agricultural Land — Danapur</div>
+        <div class="prop-specs">
+          <div class="prop-spec">Area: <strong>5 Bigha</strong></div>
+          <div class="prop-spec">Type: <strong>Kheti</strong></div>
+          <div class="prop-spec">Road: <strong>30ft</strong></div>
+        </div>
+        <div class="prop-footer">
+          <div>
+            <div class="prop-price-label">Keemat</div>
+            <div class="prop-price">₹18L</div>
+          </div>
+          <button class="prop-btn">Enquire Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="prop-card">
+      <div class="prop-img-wrap">
+        <div class="land-emoji bg-plot">🏗️</div>
+        <div class="prop-badge">Hot Deal</div>
+        <div class="prop-overlay"><span>Details Dekhein</span></div>
+      </div>
+      <div class="prop-body">
+        <div class="prop-location">📍 Varanasi, UP</div>
+        <div class="prop-title">Residential Plot — Ring Road</div>
+        <div class="prop-specs">
+          <div class="prop-spec">Area: <strong>200 Gaj</strong></div>
+          <div class="prop-spec">Type: <strong>Plot</strong></div>
+          <div class="prop-spec">Road: <strong>60ft</strong></div>
+        </div>
+        <div class="prop-footer">
+          <div>
+            <div class="prop-price-label">Keemat</div>
+            <div class="prop-price">₹35L</div>
+          </div>
+          <button class="prop-btn">Enquire Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="prop-card">
+      <div class="prop-img-wrap">
+        <div class="land-emoji bg-agri">🌳</div>
+        <div class="prop-badge">New</div>
+        <div class="prop-overlay"><span>Details Dekhein</span></div>
+      </div>
+      <div class="prop-body">
+        <div class="prop-location">📍 Bhopal, MP</div>
+        <div class="prop-title">Farm Land — Highway Touch</div>
+        <div class="prop-specs">
+          <div class="prop-spec">Area: <strong>10 Acre</strong></div>
+          <div class="prop-spec">Type: <strong>Farm</strong></div>
+          <div class="prop-spec">Road: <strong>NH-46</strong></div>
+        </div>
+        <div class="prop-footer">
+          <div>
+            <div class="prop-price-label">Keemat</div>
+            <div class="prop-price">₹65L</div>
+          </div>
+          <button class="prop-btn">Enquire Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="prop-card">
+      <div class="prop-img-wrap">
+        <div class="land-emoji bg-plot">🏘️</div>
+        <div class="prop-badge">Available</div>
+        <div class="prop-overlay"><span>Details Dekhein</span></div>
+      </div>
+      <div class="prop-body">
+        <div class="prop-location">📍 Muzaffarpur, Bihar</div>
+        <div class="prop-title">Residential Colony Plot</div>
+        <div class="prop-specs">
+          <div class="prop-spec">Area: <strong>100 Gaj</strong></div>
+          <div class="prop-spec">Type: <strong>Colony</strong></div>
+          <div class="prop-spec">Road: <strong>20ft</strong></div>
+        </div>
+        <div class="prop-footer">
+          <div>
+            <div class="prop-price-label">Keemat</div>
+            <div class="prop-price">₹8L</div>
+          </div>
+          <button class="prop-btn">Enquire Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="prop-card">
+      <div class="prop-img-wrap">
+        <div class="land-emoji bg-farm">🌿</div>
+        <div class="prop-badge">Urgent</div>
+        <div class="prop-overlay"><span>Details Dekhein</span></div>
+      </div>
+      <div class="prop-body">
+        <div class="prop-location">📍 Lucknow, UP</div>
+        <div class="prop-title">Commercial Land — Outer Ring</div>
+        <div class="prop-specs">
+          <div class="prop-spec">Area: <strong>500 Gaj</strong></div>
+          <div class="prop-spec">Type: <strong>Commercial</strong></div>
+          <div class="prop-spec">Road: <strong>80ft</strong></div>
+        </div>
+        <div class="prop-footer">
+          <div>
+            <div class="prop-price-label">Keemat</div>
+            <div class="prop-price">₹1.2Cr</div>
+          </div>
+          <button class="prop-btn">Enquire Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="prop-card">
+      <div class="prop-img-wrap">
+        <div class="land-emoji bg-agri">🏞️</div>
+        <div class="prop-badge">Available</div>
+        <div class="prop-overlay"><span>Details Dekhein</span></div>
+      </div>
+      <div class="prop-body">
+        <div class="prop-location">📍 Jaipur, Rajasthan</div>
+        <div class="prop-title">Agricultural + Well Land</div>
+        <div class="prop-specs">
+          <div class="prop-spec">Area: <strong>8 Bigha</strong></div>
+          <div class="prop-spec">Type: <strong>Kheti+Well</strong></div>
+          <div class="prop-spec">Road: <strong>SH-5</strong></div>
+        </div>
+        <div class="prop-footer">
+          <div>
+            <div class="prop-price-label">Keemat</div>
+            <div class="prop-price">₹42L</div>
+          </div>
+          <button class="prop-btn">Enquire Now</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-section" id="about">
+  <div class="section-tag">✦ Kyun Chunein Humein</div>
+  <h2 class="section-title">Hamare Saath Kyon<br>Kaam Karein?</h2>
+
+  <div class="features-grid">
+    <div class="feature">
+      <span class="feature-icon">📜</span>
+      <div class="feature-title">100% Legal Documents</div>
+      <div class="feature-desc">Har property ka pura legal verification hota hai. Registry, Jamabandi, Khasra — sab clear.</div>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">🤝</span>
+      <div class="feature-title">Transparent Dealing</div>
+      <div class="feature-desc">Koi hidden charge nahi. Jo price bola, wahi final. Poori deal transparent aur honest.</div>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">📍</span>
+      <div class="feature-title">Site Visit Free</div>
+      <div class="feature-desc">Hum khud le jaate hain site visit pe. Apni aankhon se dekhein, tabhi khareedein.</div>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">💰</span>
+      <div class="feature-title">Best Market Rate</div>
+      <div class="feature-desc">Market se behtar deal guarantee. Agar sasta milega kahi, toh hum match karenge.
+<div class="contact-item">
+  <span class="contact-icon">👤</span>
+  <div>
+    <div class="contact-detail">Property Dealer</div>
+    <div class="contact-val">Harsh Mehta</div>
+  </div>
+</div>
+
+</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-left">
+    <div class="section-tag">✦ Baat Karein</div>
+    <h2 class="section-title">Aaj Hi Apni<br>Zameen Chunein</h2>
+<p style="color: var(--gold); margin-top:10px; font-size:1rem;">
+Founder: Avinash Mehta
+</p>
+
+    <p style="color: var(--muted); font-size:1rem; margin-top:16px; line-height:1.8;">
+      Free consultation ke liye call karein ya form bharein. Hamari team 24 ghante mein contact karegi.
+    </p>
+
+    <div class="contact-info">
+      <div class="contact-item">
+        <span class="contact-icon">📞</span>
+        <div>
+          <div class="contact-detail">Call / WhatsApp</div>
+          <div class="contact-val">+91 7667453328</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">📧</span>
+        <div>
+          <div class="contact-detail">Email</div>
+          <div class="contact-val">adidas577a@gmail.com</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">📍</span>
+        <div>
+          <div class="contact-detail">Office</div>
+          <div class="contact-val">Bihar Sharif, Nalanda - 803118</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form">
+    <div class="form-title">Free Enquiry Karein</div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Aapka Naam</label>
+        <input class="form-input" type="text" placeholder="Ramesh Kumar">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone Number</label>
+        <input class="form-input" type="tel" placeholder="+91 XXXXX XXXXX">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Location (Kahan Chahiye)</label>
+      <input class="form-input" type="text" placeholder="Bihar, UP, MP...">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Zameen Ka Type</label>
+      <select class="form-select">
+        <option>Agricultural / Kheti Ki Zameen</option>
+        <option>Residential Plot</option>
+        <option>Commercial Land</option>
+        <option>Farm House Land</option>
+        <option>Industrial Land</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Budget</label>
+      <select class="form-select">
+        <option>₹5 Lakh tak</option>
+        <option>₹5L - ₹20L</option>
+        <option>₹20L - ₹50L</option>
+        <option>₹50L - ₹1 Crore</option>
+        <option>₹1 Crore se zyada</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Koi Message</label>
+      <textarea class="form-textarea" placeholder="Koi khaas requirement ho toh yahan likhein..."></textarea>
+    </div>
+
+    <button class="submit-btn" onclick="sendWhatsApp()">
+      ✦ Submit Enquiry
+    </button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Harsh Mehta Property Dealer</div>
+  <div class="footer-copy">© 2025 Harsh Mehta Property Dealer. Sab haq surakshit.</div>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms</a>
+    <a href="#">WhatsApp</a>
+  </div>
+</footer>
+
+
+<a href="https://wa.me/917667453328" target="_blank"
+style="position:fixed;bottom:20px;right:20px;background:#25D366;color:white;padding:15px 20px;border-radius:50px;text-decoration:none;font-weight:bold;z-index:9999;">
+📱 WhatsApp Chat
+</a>
+
+<script>
+function sendWhatsApp(){
+  window.open(
+    "https://wa.me/917667453328?text=Hello%20Harsh%20Mehta%20Property%20Dealer,%20mujhe%20zameen%20ke%20baare%20mein%20jankari%20chahiye.",
+    "_blank"
+  );
+}
+</script>
+
+</body>
+</html>
